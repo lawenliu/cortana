@@ -1,4 +1,4 @@
-module github.com/shafreeck/cortana
+module github.com/lawenliu/cortana
 
 go 1.14
 

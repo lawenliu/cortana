@@ -3,8 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-
-	"github.com/shafreeck/cortana"
+	"github.com/lawenliu/cortana"
 )
 
 func sayHelloCortana() {
@@ -47,5 +46,6 @@ func main() {
 	cortana.AddConfig("greeting.json", cortana.UnmarshalFunc(json.Unmarshal))
 	cortana.Use(cortana.ConfFlag("--config", "-c", cortana.UnmarshalFunc(json.Unmarshal)))
 
-	cortana.Launch()
+	cortana.Execute("say hello dssd")
+	//cortana.Launch()
 }

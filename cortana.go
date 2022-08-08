@@ -111,6 +111,17 @@ func (c *Cortana) AddEnvUnmarshaler(unmarshaler EnvUnmarshaler) {
 	c.envs = append(c.envs, unmarshaler)
 }
 
+// Execute and run commands
+func (c *Cortana) Execute(command string) {
+	args := strings.Split(command, " ")
+	cmd := c.searchCommand(args)
+	if cmd == nil {
+		c.Usage()
+		return
+	}
+	cmd.Proc()
+}
+
 // Launch and run commands
 func (c *Cortana) Launch() {
 	cmd := c.searchCommand(os.Args[1:])
@@ -841,6 +852,11 @@ func AddConfig(path string, unmarshaler Unmarshaler) {
 // Commands returns the list of the added commands
 func Commands() []*Command {
 	return c.Commands()
+}
+
+// Execute finds and executes the command
+func Execute(command string) {
+	c.Execute(command)
 }
 
 // Launch finds and executes the command
